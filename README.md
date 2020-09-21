@@ -15,3 +15,7 @@ You will also see any lint errors in the console.
 ### `sources`
 
 https://www.udemy.com/course/react-cero-experto/learn/lecture/19761990?start=45#content
+
+### `deploy`
+
+https://isaialbarran.github.io/react-crash/
