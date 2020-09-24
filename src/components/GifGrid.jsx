@@ -1,25 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFetchGifs } from '../hooks/useFetchGifs';
-import GifGridItem from './GifGridItem';
+import { GifGridItem } from './GifGridItem';
 
-const GifGrid = ({ category }) => {
+export const GifGrid = ({ category }) => {
   const { data: images, loading } = useFetchGifs(category);
-  console.log(loading);
 
   return (
     <>
-      <h3>{category}</h3>
-      {loading ? (
-        'Cargando....'
-      ) : (
-        <div className='card-grid'>
-          {images.map((img) => (
-            <GifGridItem key={img.id} img={img} />
-          ))}
-        </div>
-      )}
+      <h3 className='animate__animated animate__fadeIn'>{category}</h3>
+      {loading && <p className='animate__animated animate__flash'>'Cargando....'</p>}
+
+      <div className='card-grid'>
+        {images.map((img) => (
+          <GifGridItem key={img.id} title={img.title} url={img.url} />
+        ))}
+      </div>
     </>
   );
 };
 
-export default GifGrid;
+GifGrid.prototype = {
+  category: PropTypes.string.isRequired,
+};
